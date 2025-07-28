@@ -2,7 +2,6 @@ import express, { response } from 'express'
 import { port,mongodbURL } from './config.js'
 import cors from 'cors' 
 import mongoose from 'mongoose'
-import { Book } from './models/bookModels.js'
 import bookRoute from './routes/booksRoute.js'
 
 
@@ -12,10 +11,10 @@ const app = express()
 app.use(express.json())
 app.use('/books',bookRoute)
 app.use(cors({
-    origin:'http://localhost:3000',
-    methods:['GET','POST','PUT','DELETE'],
-    allowedHeaders:['Content-Type'],
-}))
+    origin: 'http://localhost:5173', // Replace with your actual frontend URL in production
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 
 
